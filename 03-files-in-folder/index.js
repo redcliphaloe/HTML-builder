@@ -1,7 +1,7 @@
 const process = require('process');
 const path = require('path');
 const fs = require('fs');
-const filesInFolder = async (folderName) => {    
+const filesInFolder = async (folderName) => {
     try {        
         const files = await fs.promises.readdir(path.join(__dirname, folderName), {withFileTypes: true});
         for (const file of files) {
@@ -13,8 +13,9 @@ const filesInFolder = async (folderName) => {
                 process.stdout.write(`${name} - ${ext} - ${size} bytes\n`);
             }
         }          
-      } catch (err) {
-          process.stdout.write(err.message);
-      }    
+    }
+    catch (err) {
+        process.stdout.write(err.message);
+    }      
 };
 filesInFolder('secret-folder');
