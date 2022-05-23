@@ -7,11 +7,11 @@ const exit = () => {
     process.exit();
 };
 process.stdout.write('Write text or type exit:\n');
-process.stdin.on('data', data => {
-    if (data.toString().trim().toLowerCase() === 'exit') {
+process.stdin.on('data', (chunk) => {
+    if (chunk.toString().trim().toLowerCase() === 'exit') {
         exit();
     } else {
-        ws.write(data);
+        ws.write(chunk);
     }
 });
 process.on('SIGINT', exit);
