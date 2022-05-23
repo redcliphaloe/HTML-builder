@@ -11,7 +11,7 @@ const copyDir = async (src, dest) => {
                 await copyDir(path.join(src, file.name), path.join(dest, file.name))
             } else {
                 await fs.promises.copyFile(path.join(__dirname, src, file.name),
-                path.join(__dirname, dest, file.name));
+                    path.join(__dirname, dest, file.name));
             }
         }
     }
