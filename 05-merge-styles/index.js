@@ -10,7 +10,7 @@ const createBundle = async (src, dest) => {
             const stats = await fs.promises.stat(path.join(__dirname, src, file.name));
             if (stats.isFile() && file.name.split('.')[1].toLowerCase() === 'css') {                
                 rs = fs.createReadStream(path.join(__dirname, src, file.name), 'utf8');
-                rs.on('data', (chunk) => {ws.write(chunk);});                
+                rs.on('data', (chunk) => {ws.write(chunk + '\n');});                
             }
         }
     }
