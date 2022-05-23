@@ -5,7 +5,7 @@ const copyDir = async (src, dest) => {
     try {        
         await fs.promises.mkdir(path.join(__dirname, dest), {recursive: true});
         await clearDir(path.join(__dirname, dest));
-        files = await fs.promises.readdir(path.join(__dirname, src), {withFileTypes: true});
+        const files = await fs.promises.readdir(path.join(__dirname, src), {withFileTypes: true});
         for (const file of files) {
             if (file.isDirectory()) {
                 await copyDir(path.join(src, file.name), path.join(dest, file.name))
@@ -21,7 +21,7 @@ const copyDir = async (src, dest) => {
 }
 const clearDir = async (target) => {    
     try {
-        let files = await fs.promises.readdir(target, {withFileTypes: true});
+        const files = await fs.promises.readdir(target, {withFileTypes: true});
         for (const file of files) {
             if (file.isDirectory()) {
                 await clearDir(path.join(target, file.name));
