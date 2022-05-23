@@ -5,7 +5,7 @@ const filesInFolder = async (folderName) => {
     try {        
         const files = await fs.promises.readdir(path.join(__dirname, folderName), {withFileTypes: true});
         for (const file of files) {
-            let stats = await fs.promises.stat(path.join(__dirname, folderName, file.name));
+            const stats = await fs.promises.stat(path.join(__dirname, folderName, file.name));
             if (stats.isFile()) {
                 const name = file.name.split('.')[0];
                 const ext = file.name.split('.')[1];
